@@ -4,5 +4,21 @@
   "main": "index.js",
   "repository": "git@github.com:rsshonjoydas/mern-boilerplate.git",
   "author": "rsshonjoydas <rsshonjoydas@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "serverlint": "cd ./server && yarn lint",
+    "clientlint": "cd ./client && yarn lint",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*.{ts,js,tsx,jsx}": "prettier --write --ignore-unknown"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "validate-branch-name": "^1.3.0"
+  }
 }

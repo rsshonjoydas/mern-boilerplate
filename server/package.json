@@ -11,7 +11,8 @@
   "scripts": {
     "dev": "ts-node-dev --poll src/server.ts",
     "build": "rimraf ./dist && tsc",
-    "start": "yarn build && node dist/server.js"
+    "start": "yarn build && node dist/server.js",
+    "lint": "eslint --fix --ext .ts ."
   },
   "dependencies": {
     "body-parser": "^1.20.0",
