@@ -6,6 +6,15 @@
   "author": "rsshonjoydas <rsshonjoydas@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "dev": "docker-compose -f docker-compose-dev.yml up -d",
+    "dev:down": "docker-compose -f docker-compose-dev.yml down",
+    "dev:stop": "docker-compose -f docker-compose-dev.yml stop",
+    "dev:start": "docker-compose -f docker-compose-dev.yml start",
+    "start": "docker-compose up -d",
+    "start:down": "docker-compose down",
+    "start:stop": "docker-compose stop",
+    "start:start": "docker-compose start",
+    "build": "docker-compose build",
     "serverlint": "cd ./server && yarn lint",
     "clientlint": "cd ./client && yarn lint",
     "prepare": "husky install"
