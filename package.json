@@ -5,6 +5,11 @@
   "repository": "https://github.com/rsshonjoydas/mern-boilerplate.git",
   "author": "”rsshonjoydas” <“rsshonjoydas@email.com”>",
   "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "yarn": ">=1.22.0",
+    "npm": "Prefer Yarn for streamlined dependency management."
+  },
   "scripts": {
     "dev": "concurrently \"cd client && yarn dev\" \"cd server && yarn dev\""
   },

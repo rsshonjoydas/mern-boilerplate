@@ -2,6 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "main": "dist/server.js",
+  "engines": {
+    "node": ">=18.0.0",
+    "yarn": ">=1.22.0",
+    "npm": "Prefer Yarn for streamlined dependency management."
+  },
   "scripts": {
     "dev": "ts-node-dev --poll src/server.ts",
     "build": "rimraf ./dist && tsc",
