@@ -4,6 +4,7 @@ import cors from 'cors';
 import express, { Application } from 'express';
 import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
+import pinoHttp from 'pino-http';
 import env from './config/app.config';
 
 // TODO: Express JS Configuration
@@ -30,6 +31,7 @@ app
   .use(compression())
   .use(cors(corsOptions))
   .use(helmet())
+  .use(pinoHttp())
   .use(limiter);
 
 export default app;
