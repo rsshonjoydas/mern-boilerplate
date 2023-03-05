@@ -1,0 +1,14 @@
+{
+  "name": "mern-boilerplate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/rsshonjoydas/mern-boilerplate.git",
+  "author": "”rsshonjoydas” <“rsshonjoydas@email.com”>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently \"cd client && yarn dev\" \"cd server && yarn dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
