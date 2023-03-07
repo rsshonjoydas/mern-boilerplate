@@ -1,0 +1,97 @@
+version: '3.8'
+
+services:
+  server-dev:
+    container_name: server-dev
+    restart: unless-stopped
+    build:
+      context: ./server
+      target: development
+    volumes:
+      - ./server/src:/app/src
+    ports:
+      - 5000:5000
+    env_file:
+      - ./server/.env
+    depends_on:
+      - mongo
+      - redis
+    command: yarn dev
+    networks:
+      - mydockernet
+
+  client-dev:
+    container_name: client-dev
+    restart: unless-stopped
+    build:
+      context: ./client
+      target: development
+    volumes:
+      - ./client:/app/
+    ports:
+      - 3000:3000
+    env_file:
+      - ./client/.env.local
+    depends_on:
+      - server-dev
+    command: yarn dev
+    networks:
+      - mydockernet
+
+  mongo:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo:/data/db
+    networks:
+      - mydockernet
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
+    ports:
+      - 8080:8081
+    volumes:
+      - mongo-express:/data/db
+    networks:
+      - mydockernet
+
+  redis:
+    image: redis
+    container_name: redis
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - redis:/data
+    networks:
+      - mydockernet
+
+  nginx:
+    image: nginx:1.21.5-alpine
+    container_name: nginx
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/nginx-dev.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - server-dev
+      - client-dev
+    networks:
+      - mydockernet
+
+volumes:
+  mongo:
+  mongo-express:
+  redis:
+
+networks:
+  mydockernet:
+    driver: bridge
