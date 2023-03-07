@@ -6,6 +6,7 @@ import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
 import pinoHttp from 'pino-http';
 import env from './config/app.config';
+import redis from './config/redis.config';
 
 // TODO: Express JS Configuration
 const app: Application = express();
@@ -22,6 +23,8 @@ let corsOptions = {
   credentials: true,
   optionsSuccessStatus: 200, // ? some legacy browsers (IE11, various SmartTVs) choke on 204
 };
+
+redis(app);
 
 // TODO: Necessary Packages
 app
